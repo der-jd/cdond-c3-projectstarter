@@ -220,7 +220,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: amazon/aws-cli
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
@@ -229,17 +229,9 @@ jobs:
             sudo apt update
             sudo apt upgrade -y
       - run:
-          name: Install tar
+          name: Install awscli
           command: |
-            sudo apt install -y tar
-      - run:
-          name: Install node
-          command: |
-            sudo apt install -y node
-      - run:
-          name: Install npm
-          command: |
-            sudo apt install -y npm
+            sudo apt install -y awscli
       - attach_workspace:
           at: ~/
       - run:
