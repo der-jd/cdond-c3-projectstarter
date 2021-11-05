@@ -231,11 +231,15 @@ jobs:
             sudo apt update
             sudo apt upgrade -y
       - run:
-          name: Install Node
+          name: Install tar
+          command: |
+            sudo apt install -y tar
+      - run:
+          name: Install node
           command: |
             sudo apt install -y node
       - run:
-          name: Install Node
+          name: Install npm
           command: |
             sudo apt install -y npm
       - run:
