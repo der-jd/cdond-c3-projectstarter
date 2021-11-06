@@ -1,6 +1,7 @@
 ---
 
 - name: create backend directory
+  become: yes
   file:
     path: ~/backend
     state: directory
