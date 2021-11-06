@@ -305,7 +305,7 @@ jobs:
             apk add --update curl
             apk add --update nodejs
             apk add --update npm
-            apk add --update awscli
+            apk add --update aws-cli
       - run:
           name: Get backend url
           command: |
