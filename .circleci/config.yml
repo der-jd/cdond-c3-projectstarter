@@ -257,8 +257,8 @@ jobs:
             aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
       - destroy-environment:
           WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
-      - revert-migrations:
-          WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
+     # - revert-migrations:
+     #     WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
 
   deploy-backend:
     docker:
@@ -292,8 +292,8 @@ jobs:
             ansible-playbook -i inventory.txt deploy-backend.yml
       - destroy-environment:
           WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
-      - revert-migrations:
-          WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
+   #   - revert-migrations:
+    #      WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
 
   smoke-test:
     docker:
@@ -337,8 +337,8 @@ jobs:
             fi
       #- destroy-environment:
        #   WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
-      - revert-migrations:
-          WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
+      #- revert-migrations:
+       #   WorkflowID: ${CIRCLE_WORKFLOW_ID:0:7}
 
 #  cloudfront-update:
 #    docker:
