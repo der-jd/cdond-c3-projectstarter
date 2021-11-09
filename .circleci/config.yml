@@ -213,6 +213,7 @@ jobs:
       - run:
           name: Send migration results to memstash
           command: |
+            cat ~/project/backend/migrations_dump.txt
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
               curl -H "Content-Type: text/plain" -H "token: e8f92747-0fcb-4f20-99e2-6db6aa07bfc6" --request PUT --data "1" https://api.memstash.io/values/migration_${CIRCLE_WORKFLOW_ID:0:7}
