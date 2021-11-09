@@ -11,6 +11,10 @@ In this project, you will prove your mastery of the following learning objective
 
 ### NECESSARY FIXES
 * open port TCP-5432 from all sources (0.0.0.0/0) for security group (inbound rule) of postgres database
+* create file' ansible.cfg' in directory .circleci/ansible with content
+  * [defaults] \
+    HOST_KEY_CHECKING=false
+
 
 ### Instructions
 
