@@ -9,6 +9,9 @@ In this project, you will prove your mastery of the following learning objective
 
 ![Diagram of CI/CD Pipeline we will be building.](udapeople.png)
 
+### NECESSARY FIXES
+* open port TCP-5432 from all sources (0.0.0.0/0) for security group (inbound rule) of postgres database
+
 ### Instructions
 
 * [Selling CI/CD](instructions/0-selling-cicd.md)
