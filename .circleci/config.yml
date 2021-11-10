@@ -321,10 +321,10 @@ jobs:
             echo "API_URL = ${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
             then
-              echo >SUCCESS<
+              echo SUCCESS
               return 0
             else
-              echo >FAIL<
+              echo FAIL
               return 1
             fi
       - run:
