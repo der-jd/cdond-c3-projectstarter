@@ -347,16 +347,14 @@ jobs:
 
   cloudfront-update:
     docker:
-      - image: circleci/node:13.8.0
+      - image: amazon/aws-cli
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            sudo apt update
-            sudo apt upgrade -y
-            sudo apt install -y curl
-            sudo apt install -y awscli
+            yum update -y
+            yum install -y curl
             aws --version
       - run:
           name: Update cloudfront distribution
