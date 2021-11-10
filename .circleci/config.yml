@@ -298,16 +298,17 @@ jobs:
 
   smoke-test:
     docker:
-      - image: alpine
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - run:
           name: Install dependencies
           command: |
-            apk add --update curl
-            apk add --update nodejs
-            apk add --update npm
-            apk add --update aws-cli
+            sudo apt update
+            sudo apt upgrade -y
+            sudo apt install -y curl
+            sudo apt install -y awscli
+            awscli --version
       - run:
           name: Backend smoke test.
           command: |
@@ -320,8 +321,10 @@ jobs:
             echo "API_URL = ${API_URL}"
             if curl "${API_URL}/api/status" | grep "ok"
             then
+              echo >SUCCESS<
               return 0
             else
+              echo >FAIL<
               return 1
             fi
       - run:
