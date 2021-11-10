@@ -308,7 +308,7 @@ jobs:
             sudo apt upgrade -y
             sudo apt install -y curl
             sudo apt install -y awscli
-            awscli --version
+            aws --version
       - run:
           name: Backend smoke test.
           command: |
