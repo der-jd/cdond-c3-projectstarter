@@ -368,6 +368,7 @@ jobs:
             OldWorkflowID=$(aws cloudformation \
               list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
               --no-paginate --output text)
+            echo OldWorkflowID: $OldWorkflowID
             curl -H "Content-Type: text/plain" -H "token: ${CIRCLE_WORKFLOW_ID}" --request PUT --data "$OldWorkflowID" https://api.memstash.io/values/OldWorkflowID
       - run:
           name: Update cloudfront distribution
@@ -409,11 +410,11 @@ jobs:
             if [[ "${Stacks[@]}" =~ "${OldWorkflowID}" ]]
             then
               echo "Destroying environment: ${OldWorkflowID}"
-              if grep -q "udapeople-backend-${OldWorkflowID}" Stacks
+              if echo $Stacks | grep -q "udapeople-backend-${OldWorkflowID}"
               then
                 aws cloudformation delete-stack --stack-name udapeople-backend-${OldWorkflowID}
               fi
-              if grep -q "udapeople-frontend-${OldWorkflowID}" Stacks
+              if echo $Stacks | grep -q "udapeople-frontend-${OldWorkflowID}"
               then
                 aws s3 rm "s3://udapeople-${OldWorkflowID}" --recursive
                 aws cloudformation delete-stack --stack-name udapeople-frontend-${OldWorkflowID}
